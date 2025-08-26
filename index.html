@@ -1,0 +1,2645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚂 Welcome Kriti - Journey to Rajasthan ✨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&family=Kalam:wght@300;400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Train Entrance Animation */
+        .train-entrance {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #87CEEB 0%, #FFE4B5 50%, #DDA0DD 100%);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .train-container {
+            position: relative;
+            width: 400px;
+            height: 200px;
+        }
+        
+        .train-body {
+            position: absolute;
+            bottom: 50px;
+            left: -500px;
+            width: 300px;
+            height: 120px;
+            background: linear-gradient(45deg, #8B4513, #CD853F);
+            border-radius: 15px;
+            animation: trainEnter 3s ease-in-out forwards;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .train-windows {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            width: 240px;
+            height: 60px;
+            background: #87CEEB;
+            border-radius: 10px;
+            display: flex;
+            overflow: hidden;
+        }
+        
+        .train-door-left, .train-door-right {
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(45deg, #4682B4, #87CEEB);
+            transition: transform 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .doors-open .train-door-left {
+            transform: translateX(-100%);
+        }
+        
+        .doors-open .train-door-right {
+            transform: translateX(100%);
+        }
+        
+        .train-wheels {
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            display: flex;
+            gap: 80px;
+        }
+        
+        .wheel {
+            width: 40px;
+            height: 40px;
+            background: #2F4F4F;
+            border-radius: 50%;
+            border: 5px solid #696969;
+            animation: wheelSpin 0.5s linear infinite;
+        }
+        
+        .train-smoke {
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            font-size: 2rem;
+            animation: smokeFloat 2s ease-in-out infinite;
+        }
+        
+        .welcome-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255,255,255,0.95);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            opacity: 0;
+            animation: messageAppear 2s ease-in-out 4s forwards;
+        }
+        
+        @keyframes trainEnter {
+            0% { left: -500px; }
+            70% { left: 50px; }
+            100% { left: 50px; }
+        }
+        
+        @keyframes trainLeave {
+            0% { left: 50px; }
+            100% { left: 100vw; }
+        }
+        
+        @keyframes wheelSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes smokeFloat {
+            0%, 100% { transform: translateY(0px); opacity: 0.7; }
+            50% { transform: translateY(-10px); opacity: 1; }
+        }
+        
+        @keyframes messageAppear {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        /* Main Website Styles */
+        .main-website {
+            opacity: 0;
+            background: linear-gradient(135deg, #FFDAB9 0%, #DDA0DD 30%, #CD853F 70%, #8B4513 100%);
+            background-size: 400% 400%;
+            animation: desertGradient 20s ease infinite;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .main-website.show {
+            opacity: 1;
+            animation: fadeIn 2s ease-in-out forwards, desertGradient 20s ease infinite;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes desertGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Rajasthani Elements */
+        .desert-landscape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to top, #CD853F 0%, #DDA0DD 100%);
+            clip-path: polygon(0 100%, 100% 100%, 100% 60%, 80% 70%, 60% 50%, 40% 65%, 20% 45%, 0 55%);
+        }
+        
+        .palace-silhouette {
+            position: absolute;
+            bottom: 150px;
+            right: 10%;
+            width: 200px;
+            height: 100px;
+            background: rgba(139, 69, 19, 0.6);
+            clip-path: polygon(20% 100%, 0% 60%, 15% 40%, 25% 50%, 35% 30%, 45% 45%, 55% 25%, 65% 40%, 75% 20%, 85% 35%, 100% 15%, 100% 100%);
+            animation: palaceGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes palaceGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255,215,0,0.3)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255,215,0,0.6)); }
+        }
+        
+        .camel-caravan {
+            position: absolute;
+            bottom: 180px;
+            left: -200px;
+            font-size: 3rem;
+            animation: camelWalk 25s linear infinite;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+        }
+        
+        @keyframes camelWalk {
+            0% { left: -200px; }
+            100% { left: 100vw; }
+        }
+        
+        /* Sparkle Effects */
+        .sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+        
+        .sparkle {
+            position: absolute;
+            color: #FFD700;
+            font-size: 1.5rem;
+            animation: sparkleFloat 4s ease-in-out infinite;
+            opacity: 0;
+        }
+        
+        @keyframes sparkleFloat {
+            0%, 100% { opacity: 0; transform: translateY(0px) rotate(0deg) scale(0.5); }
+            50% { opacity: 1; transform: translateY(-20px) rotate(180deg) scale(1.2); }
+        }
+        
+        /* Typography */
+        .handwritten {
+            font-family: 'Kalam', cursive;
+            background: linear-gradient(45deg, #8B4513, #CD853F, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .elegant-title {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(45deg, #8B4513, #DDA0DD, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255,215,0,0.3);
+        }
+        
+        /* Cards */
+        .rajasthani-card {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            border: 2px solid rgba(255,215,0,0.3);
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .rajasthani-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,215,0,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .rajasthani-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 35px 70px rgba(0,0,0,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+        
+        .rajasthani-card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Bottom Train Animation */
+        .bottom-train {
+            position: fixed;
+            bottom: 20px;
+            left: -300px;
+            font-size: 3rem;
+            animation: bottomTrainMove 15s linear infinite;
+            z-index: 200;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+        }
+        
+        @keyframes bottomTrainMove {
+            0% { left: -300px; }
+            100% { left: 100vw; }
+        }
+        
+        .heart-smoke {
+            position: absolute;
+            top: -20px;
+            left: 50px;
+            animation: heartSmokeFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes heartSmokeFloat {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-15px) scale(1.2); opacity: 1; }
+        }
+        
+        /* Rajasthani Patterns */
+        .pattern-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,215,0,0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(139,69,19,0.1) 2px, transparent 2px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .train-container {
+                width: 300px;
+                height: 150px;
+            }
+            
+            .train-body {
+                width: 250px;
+                height: 100px;
+            }
+            
+            .elegant-title {
+                font-size: 2.5rem;
+            }
+            
+            .palace-silhouette {
+                width: 150px;
+                height: 75px;
+            }
+        }
+        
+        /* Magic Buttons */
+        .magic-button {
+            border: none;
+            border-radius: 25px;
+            padding: 20px 30px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+        }
+        
+        .portal-btn {
+            background: linear-gradient(135deg, #8B4513, #CD853F, #FFD700);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        .constellation-btn {
+            background: linear-gradient(135deg, #4B0082, #8A2BE2, #9370DB);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite 1s;
+        }
+        
+        .surprise-btn {
+            background: linear-gradient(135deg, #FFD700, #FF6B6B, #4ECDC4, #45B7D1);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite 2s;
+        }
+        
+        .decoder-btn {
+            background: linear-gradient(135deg, #FF1744, #E91E63, #9C27B0, #673AB7);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite 0.5s;
+        }
+        
+        .hug-btn {
+            background: linear-gradient(135deg, #FF9800, #FF5722, #F44336, #E91E63);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite 1.5s;
+        }
+        
+        .capsule-btn {
+            background: linear-gradient(135deg, #00BCD4, #009688, #4CAF50, #8BC34A);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite 2.5s;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .magic-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .magic-button:hover {
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+        
+        .magic-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Journey Portal */
+        .journey-portal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.9);
+            z-index: 20000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .journey-portal-container.show {
+            display: flex;
+        }
+        
+        .journey-portal {
+            background: linear-gradient(135deg, #87CEEB, #FFE4B5, #DDA0DD);
+            border-radius: 25px;
+            width: 90vw;
+            max-width: 800px;
+            height: 80vh;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        
+        .portal-header {
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .portal-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #8B4513;
+            margin: 0;
+        }
+        
+        .close-portal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #8B4513;
+        }
+        
+        .journey-scene {
+            height: calc(100% - 80px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .moving-landscape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 60%;
+            animation: landscapeMove 20s linear infinite;
+        }
+        
+        @keyframes landscapeMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .landscape-layer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .mountains {
+            background: linear-gradient(to top, #8B4513 0%, #CD853F 50%, #DDA0DD 100%);
+            clip-path: polygon(0 100%, 10% 60%, 20% 80%, 30% 40%, 40% 70%, 50% 30%, 60% 60%, 70% 20%, 80% 50%, 90% 10%, 100% 40%, 100% 100%);
+            z-index: 1;
+        }
+        
+        .hills {
+            background: linear-gradient(to top, #228B22 0%, #32CD32 100%);
+            clip-path: polygon(0 100%, 15% 70%, 35% 85%, 55% 65%, 75% 80%, 100% 70%, 100% 100%);
+            z-index: 2;
+        }
+        
+        .trees {
+            background: repeating-linear-gradient(90deg, transparent 0px, transparent 80px, #228B22 80px, #228B22 85px);
+            height: 30%;
+            z-index: 3;
+        }
+        
+        .journey-train {
+            position: absolute;
+            bottom: 25%;
+            left: 20%;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+            animation: trainBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes trainBounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .train-engine {
+            font-size: 4rem;
+            margin-right: 10px;
+        }
+        
+        .train-window {
+            background: #87CEEB;
+            border-radius: 10px;
+            width: 60px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #4682B4;
+        }
+        
+        .passenger {
+            font-size: 1.5rem;
+            animation: wave 3s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(15deg); }
+            75% { transform: rotate(-15deg); }
+        }
+        
+        .journey-progress {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            right: 5%;
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .progress-bar {
+            background: #ddd;
+            border-radius: 10px;
+            height: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #FFD700, #FF6B6B, #4ECDC4);
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+        
+        .journey-stops {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .stop {
+            background: #f0f0f0;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .stop.active {
+            background: linear-gradient(135deg, #FFD700, #FF6B6B);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .journey-message {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.95);
+            padding: 20px 30px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            color: #8B4513;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: messageFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes messageFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        /* Secret Message Decoder */
+        .secret-decoder-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.95);
+            z-index: 20000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .secret-decoder-container.show {
+            display: flex;
+        }
+        
+        .decoder-portal {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            border: 2px solid #FF1744;
+            border-radius: 25px;
+            width: 90vw;
+            max-width: 900px;
+            height: 85vh;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(255,23,68,0.3);
+        }
+        
+        .decoder-header {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255,23,68,0.3);
+        }
+        
+        .decoder-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #FF1744;
+            margin: 0;
+        }
+        
+        .close-decoder {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #FF1744;
+        }
+        
+        .decoder-scene {
+            height: calc(100% - 80px);
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .decoder-instructions {
+            text-align: center;
+            color: #FF1744;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .secret-messages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .secret-msg-btn {
+            background: linear-gradient(135deg, #FF1744, #E91E63);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(255,23,68,0.2);
+        }
+        
+        .secret-msg-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255,23,68,0.4);
+        }
+        
+        .secret-msg-btn.decoded {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            transform: scale(0.95);
+        }
+        
+        .decoded-message {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #FF1744;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            min-height: 150px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .message-display {
+            color: #FFD700;
+            font-size: 1.3rem;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .decoder-counter {
+            text-align: center;
+            color: #FF1744;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        /* Virtual Hug Sender */
+        .hug-sender-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.9);
+            z-index: 20000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hug-sender-container.show {
+            display: flex;
+        }
+        
+        .hug-portal {
+            background: linear-gradient(135deg, #FF9800, #FF5722);
+            border-radius: 25px;
+            width: 90vw;
+            max-width: 800px;
+            height: 80vh;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        
+        .hug-header {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hug-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: white;
+            margin: 0;
+        }
+        
+        .close-hug {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .hug-scene {
+            height: calc(100% - 80px);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+        
+        .hug-avatar {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+        }
+        
+        .avatar-me, .avatar-kriti {
+            font-size: 5rem;
+            animation: avatarFloat 3s ease-in-out infinite;
+        }
+        
+        .avatar-kriti {
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes avatarFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .hug-animation {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .hug-animation.active {
+            opacity: 1;
+            animation: hugPulse 2s ease-in-out;
+        }
+        
+        @keyframes hugPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.5); }
+        }
+        
+        .hug-hearts {
+            font-size: 3rem;
+        }
+        
+        .hug-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .hug-type-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 25px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hug-type-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .hug-message {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hug-counter {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        /* Friendship Time Capsule */
+        .time-capsule-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.9);
+            z-index: 20000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .time-capsule-container.show {
+            display: flex;
+        }
+        
+        .capsule-portal {
+            background: linear-gradient(135deg, #00BCD4, #009688);
+            border-radius: 25px;
+            width: 90vw;
+            max-width: 900px;
+            height: 85vh;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        
+        .capsule-header {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .capsule-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: white;
+            margin: 0;
+        }
+        
+        .close-capsule {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .capsule-scene {
+            height: calc(100% - 80px);
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .time-machine {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .capsule-display {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            min-height: 200px;
+        }
+        
+        .capsule-screen {
+            color: #00E676;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+        
+        .time-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .time-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 20px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .time-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+        
+        .memory-vault {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .memory-vault h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .memory-vault input {
+            width: 70%;
+            padding: 12px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+        
+        .memory-vault button {
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .memory-vault button:hover {
+            transform: scale(1.05);
+        }
+        
+        .stored-memories {
+            margin-top: 20px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        
+        .memory-item {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Memory Constellation */
+        .constellation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #000428, #004e92);
+            z-index: 20000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .constellation-container.show {
+            display: flex;
+        }
+        
+        .constellation-portal {
+            background: rgba(0,0,0,0.8);
+            border: 2px solid #FFD700;
+            border-radius: 25px;
+            width: 90vw;
+            max-width: 900px;
+            height: 85vh;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(255,215,0,0.3);
+        }
+        
+        .constellation-header {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255,215,0,0.3);
+        }
+        
+        .constellation-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #FFD700;
+            margin: 0;
+        }
+        
+        .close-constellation {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #FFD700;
+        }
+        
+        .constellation-scene {
+            height: calc(100% - 80px);
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+        
+        .night-sky {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: twinkle 4s ease-in-out infinite alternate;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        .constellation-instructions {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #FFD700;
+            font-size: 1.1rem;
+            z-index: 10;
+        }
+        
+        .wish-input-container {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .wish-input-container input {
+            padding: 12px 20px;
+            border: 2px solid #FFD700;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            color: #FFD700;
+            font-size: 1rem;
+            width: 300px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .wish-input-container input::placeholder {
+            color: rgba(255,215,0,0.7);
+        }
+        
+        .wish-input-container button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .wish-input-container button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255,215,0,0.3);
+        }
+        
+        .constellation-counter {
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            color: #FFD700;
+            font-size: 1.1rem;
+            background: rgba(0,0,0,0.5);
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 1px solid #FFD700;
+        }
+        
+        .wish-star {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #FFD700;
+            cursor: pointer;
+            animation: starGlow 2s ease-in-out infinite alternate;
+            z-index: 5;
+        }
+        
+        @keyframes starGlow {
+            0% { 
+                text-shadow: 0 0 5px #FFD700;
+                transform: scale(1);
+            }
+            100% { 
+                text-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700;
+                transform: scale(1.2);
+            }
+        }
+        
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #FFD700;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #FFD700;
+        }
+        
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #FFD700);
+        }
+        
+        @keyframes shootingStar {
+            0% {
+                transform: translateX(-100px) translateY(100px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw) translateY(-100px);
+                opacity: 0;
+            }
+        }
+        
+        /* Friendship Card */
+        .friendship-card-container {
+            opacity: 0;
+            transform: scale(0.8) rotateY(180deg);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 30px;
+            perspective: 1000px;
+        }
+        
+        .friendship-card-container.show {
+            opacity: 1;
+            transform: scale(1) rotateY(0deg);
+        }
+        
+        .friendship-card {
+            background: linear-gradient(135deg, #FFE4E1, #FFF8DC, #F0E68C, #DDA0DD);
+            border: 5px solid #FFD700;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.6),
+                0 0 0 10px rgba(255,215,0,0.1);
+            position: relative;
+            overflow: hidden;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .friendship-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,215,0,0.1), transparent);
+            animation: cardShimmer 4s ease-in-out infinite;
+        }
+        
+        @keyframes cardShimmer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+        
+        .card-header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .floating-hearts-card {
+            margin-bottom: 15px;
+        }
+        
+        .floating-hearts-card span {
+            display: inline-block;
+            font-size: 1.5rem;
+            margin: 0 5px;
+            animation: heartFloat 2s ease-in-out infinite;
+        }
+        
+        .floating-hearts-card span:nth-child(1) { animation-delay: 0s; }
+        .floating-hearts-card span:nth-child(2) { animation-delay: 0.2s; }
+        .floating-hearts-card span:nth-child(3) { animation-delay: 0.4s; }
+        .floating-hearts-card span:nth-child(4) { animation-delay: 0.6s; }
+        .floating-hearts-card span:nth-child(5) { animation-delay: 0.8s; }
+        
+        @keyframes heartFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.2); }
+        }
+        
+        .card-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #8B4513, #CD853F, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .friendship-badge {
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .certificate-text {
+            font-size: 1.2rem;
+            color: #8B4513;
+            margin: 5px 0;
+        }
+        
+        .friend-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            font-weight: bold;
+            color: #FF6B6B;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .friendship-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 15px 0 25px 0;
+        }
+        
+        .friendship-promises {
+            background: rgba(255,255,255,0.7);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid rgba(255,215,0,0.3);
+        }
+        
+        .promise-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            font-size: 1.1rem;
+            color: #8B4513;
+        }
+        
+        .promise-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .validity {
+            background: linear-gradient(135deg, #FFE4E1, #F0E68C);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px solid #FFD700;
+        }
+        
+        .validity p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+            color: #8B4513;
+        }
+        
+        .signature-section {
+            margin-top: 25px;
+            text-align: center;
+        }
+        
+        .signature-line {
+            font-family: 'Kalam', cursive;
+            font-size: 1.3rem;
+            color: #8B4513;
+            margin-bottom: 5px;
+        }
+        
+        .signature-date {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .card-footer {
+            text-align: center;
+            margin-top: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .special-seal {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: sealRotate 10s linear infinite;
+        }
+        
+        @keyframes sealRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .seal-content {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            animation: sealContentRotate 10s linear infinite reverse;
+        }
+        
+        @keyframes sealContentRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .seal-text {
+            display: block;
+            font-size: 0.7rem;
+            line-height: 1;
+        }
+        
+        .seal-icon {
+            font-size: 1.5rem;
+            display: block;
+            margin: 2px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Train Entrance Animation -->
+    <div class="train-entrance" id="trainEntrance">
+        <div class="train-container">
+            <div class="train-body" id="trainBody">
+                <div class="train-windows" id="trainWindows">
+                    <div class="train-door-left">🚪</div>
+                    <div class="train-door-right">🚪</div>
+                </div>
+                <div class="train-wheels">
+                    <div class="wheel"></div>
+                    <div class="wheel"></div>
+                </div>
+                <div class="train-smoke">💨</div>
+            </div>
+        </div>
+        
+        <div class="welcome-message" id="welcomeMessage">
+            <h1 class="text-4xl font-bold text-amber-800 mb-4" style="font-family: 'Dancing Script', cursive;">
+                Welcome Kriti! 🌟
+            </h1>
+            <p class="text-xl text-gray-700 mb-2">
+                Ready for your new journey to
+            </p>
+            <p class="text-2xl font-bold text-red-600 mb-4">
+                Kota, Rajasthan 🏰
+            </p>
+            <p class="text-lg text-gray-600">
+                All aboard for an amazing adventure! 🚂✨
+            </p>
+        </div>
+    </div>
+    
+    <!-- Main Website -->
+    <div class="main-website" id="mainWebsite">
+        <!-- Pattern Overlay -->
+        <div class="pattern-overlay"></div>
+        
+        <!-- Sparkles -->
+        <div class="sparkles" id="sparklesContainer"></div>
+        
+        <!-- Desert Landscape -->
+        <div class="desert-landscape"></div>
+        
+        <!-- Palace Silhouette -->
+        <div class="palace-silhouette"></div>
+        
+        <!-- Camel Caravan -->
+        <div class="camel-caravan">🐪🐪🐪</div>
+        
+        <!-- Main Content -->
+        <div class="relative z-10 min-h-screen p-4">
+            <!-- Header -->
+            <div class="text-center py-12">
+                <h1 class="elegant-title text-7xl font-bold mb-6">
+                    Bon Voyage Kriti 🚂✨
+                </h1>
+                <p class="text-2xl text-white font-light mb-8 drop-shadow-lg">
+                    Wishing you safe travels and unforgettable memories in Rajasthan
+                </p>
+                
+                <!-- Journey Details -->
+                <div class="rajasthani-card p-8 max-w-2xl mx-auto mb-12">
+                    <div class="text-6xl mb-4">🎫</div>
+                    <h2 class="text-3xl font-bold text-amber-800 mb-4" style="font-family: 'Dancing Script', cursive;">
+                        Journey Details
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-6 text-lg">
+                        <div class="bg-gradient-to-r from-orange-100 to-red-100 p-4 rounded-lg">
+                            <div class="text-2xl mb-2">📅</div>
+                            <p class="font-semibold text-gray-800">Tomorrow</p>
+                            <p class="text-gray-600">Your big day arrives!</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-4 rounded-lg">
+                            <div class="text-2xl mb-2">🕔</div>
+                            <p class="font-semibold text-gray-800">5:00 PM</p>
+                            <p class="text-gray-600">Departure time</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 rounded-lg">
+                            <div class="text-2xl mb-2">🏰</div>
+                            <p class="font-semibold text-gray-800">Kota, Rajasthan</p>
+                            <p class="text-gray-600">Land of palaces & colors</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-100 to-blue-100 p-4 rounded-lg">
+                            <div class="text-2xl mb-2">🚂</div>
+                            <p class="font-semibold text-gray-800">Train Journey</p>
+                            <p class="text-gray-600">Adventure awaits!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Heartfelt Message -->
+            <div class="rajasthani-card p-12 max-w-4xl mx-auto mb-12">
+                <div class="text-center mb-8">
+                    <h2 class="elegant-title text-5xl font-bold mb-6">
+                        A Message From My Heart 💕
+                    </h2>
+                </div>
+                
+                <div class="handwritten text-2xl leading-relaxed text-center mb-8" style="line-height: 1.8;">
+                    My dearest Kriti,<br><br>
+                    
+                    As you embark on this beautiful journey to the royal land of Rajasthan, 
+                    my heart is filled with excitement for all the magical moments waiting for you! 🌟<br><br>
+                    
+                    From the majestic palaces of Kota to the golden desert sunsets, 
+                    from the colorful bazaars to the warm smiles of the people - 
+                    every moment will be a treasure to cherish forever! ✨<br><br>
+                    
+                    Though miles may separate us, you'll always be close to my heart. 
+                    Take lots of pictures, try the delicious Rajasthani food, 
+                    and soak in every beautiful moment! 📸🍛<br><br>
+                    
+                    May your journey be filled with joy, wonder, and unforgettable memories. 
+                    Stay safe, have fun, and know that I'm cheering you on from here! 💖<br><br>
+                    
+                    With all my love and warmest wishes,<br>
+                    Your friend who misses you already! 🤗
+                </div>
+                
+                <div class="text-center">
+                    <div class="text-6xl mb-4">🏰🐪✨🚂💕</div>
+                </div>
+            </div>
+            
+            <!-- Rajasthani Highlights -->
+            <div class="rajasthani-card p-8 max-w-6xl mx-auto mb-12">
+                <h2 class="elegant-title text-4xl font-bold text-center mb-8">
+                    Rajasthani Wonders Await You! 🏛️
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center p-6 bg-gradient-to-br from-orange-100 to-red-100 rounded-xl transform hover:scale-105 transition-all duration-300">
+                        <div class="text-5xl mb-4">🏰</div>
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Royal Palaces</h3>
+                        <p class="text-gray-700">Magnificent architecture and royal heritage</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-gradient-to-br from-yellow-100 to-orange-100 rounded-xl transform hover:scale-105 transition-all duration-300">
+                        <div class="text-5xl mb-4">🐪</div>
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Desert Adventures</h3>
+                        <p class="text-gray-700">Camel rides and golden sand dunes</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-gradient-to-br from-pink-100 to-purple-100 rounded-xl transform hover:scale-105 transition-all duration-300">
+                        <div class="text-5xl mb-4">🎨</div>
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Colorful Culture</h3>
+                        <p class="text-gray-700">Vibrant textiles and traditional arts</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-gradient-to-br from-green-100 to-blue-100 rounded-xl transform hover:scale-105 transition-all duration-300">
+                        <div class="text-5xl mb-4">🍛</div>
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Delicious Food</h3>
+                        <p class="text-gray-700">Dal baati churma and royal cuisine</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl transform hover:scale-105 transition-all duration-300">
+                        <div class="text-5xl mb-4">💎</div>
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Jewelry & Crafts</h3>
+                        <p class="text-gray-700">Beautiful handicrafts and gems</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-gradient-to-br from-red-100 to-pink-100 rounded-xl transform hover:scale-105 transition-all duration-300">
+                        <div class="text-5xl mb-4">🌅</div>
+                        <h3 class="text-xl font-bold text-amber-800 mb-2">Magical Sunsets</h3>
+                        <p class="text-gray-700">Breathtaking desert sunrises and sunsets</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Magic Journey Portal Section -->
+            <div class="text-center py-12">
+                <div class="rajasthani-card p-12 max-w-6xl mx-auto mb-12">
+                    <h2 class="elegant-title text-5xl font-bold mb-8">
+                        🌟 Your Magical Journey Portal 🌟
+                    </h2>
+                    <p class="text-xl text-gray-700 mb-8">
+                        Step into the magic! Experience your journey before it begins...
+                    </p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <button class="magic-button portal-btn" onclick="startVirtualJourney()" id="portalBtn">
+                            🚂 Take Virtual Train Ride
+                        </button>
+                        <button class="magic-button constellation-btn" onclick="openMemoryConstellation()" id="constellationBtn">
+                            ⭐ Create Memory Stars
+                        </button>
+                        <button class="magic-button surprise-btn" onclick="revealFriendshipCard()" id="surpriseBtn">
+                            💝 Special Friendship Gift
+                        </button>
+                    </div>
+                    
+                    <!-- NEW INCREDIBLE FEATURES -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <button class="magic-button decoder-btn" onclick="openSecretDecoder()" id="decoderBtn">
+                            🔐 Secret Message Decoder
+                        </button>
+                        <button class="magic-button hug-btn" onclick="openVirtualHugSender()" id="hugBtn">
+                            🤗 Send Virtual Hugs
+                        </button>
+                        <button class="magic-button capsule-btn" onclick="openTimeCapsule()" id="capsuleBtn">
+                            ⏰ Friendship Time Capsule
+                        </button>
+                    </div>
+                    
+                    <!-- Virtual Journey Portal -->
+                    <div class="journey-portal-container" id="journeyPortal">
+                        <div class="journey-portal">
+                            <div class="portal-header">
+                                <h3 class="portal-title">🚂 Your Virtual Journey to Rajasthan 🏰</h3>
+                                <button class="close-portal" onclick="closePortal()">&times;</button>
+                            </div>
+                            <div class="journey-scene" id="journeyScene">
+                                <div class="moving-landscape">
+                                    <div class="landscape-layer mountains"></div>
+                                    <div class="landscape-layer hills"></div>
+                                    <div class="landscape-layer trees"></div>
+                                </div>
+                                <div class="journey-train">
+                                    <div class="train-engine">🚂</div>
+                                    <div class="train-window">
+                                        <div class="passenger">👩‍🦱</div>
+                                    </div>
+                                </div>
+                                <div class="journey-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="progressFill"></div>
+                                    </div>
+                                    <div class="journey-stops">
+                                        <div class="stop active" data-stop="0">🏠 Home</div>
+                                        <div class="stop" data-stop="1">🌆 City</div>
+                                        <div class="stop" data-stop="2">🌾 Countryside</div>
+                                        <div class="stop" data-stop="3">🏔️ Mountains</div>
+                                        <div class="stop" data-stop="4">🏰 Kota, Rajasthan</div>
+                                    </div>
+                                </div>
+                                <div class="journey-message" id="journeyMessage">
+                                    Starting your magical journey...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Secret Message Decoder -->
+                    <div class="secret-decoder-container" id="secretDecoder">
+                        <div class="decoder-portal">
+                            <div class="decoder-header">
+                                <h3 class="decoder-title">🔐 Secret Message Decoder 🔐</h3>
+                                <button class="close-decoder" onclick="closeSecretDecoder()">&times;</button>
+                            </div>
+                            <div class="decoder-scene">
+                                <div class="decoder-instructions">
+                                    <p>💌 I've hidden secret messages throughout our friendship! 💌</p>
+                                    <p>🔍 Click the buttons below to decode my feelings... 🔍</p>
+                                </div>
+                                
+                                <div class="secret-messages-grid">
+                                    <button class="secret-msg-btn" onclick="decodeMessage(1)">
+                                        🌟 Message #1
+                                    </button>
+                                    <button class="secret-msg-btn" onclick="decodeMessage(2)">
+                                        💕 Message #2
+                                    </button>
+                                    <button class="secret-msg-btn" onclick="decodeMessage(3)">
+                                        ✨ Message #3
+                                    </button>
+                                    <button class="secret-msg-btn" onclick="decodeMessage(4)">
+                                        🌈 Message #4
+                                    </button>
+                                    <button class="secret-msg-btn" onclick="decodeMessage(5)">
+                                        💫 Message #5
+                                    </button>
+                                    <button class="secret-msg-btn" onclick="decodeMessage(6)">
+                                        🎭 Final Secret
+                                    </button>
+                                </div>
+                                
+                                <div class="decoded-message" id="decodedMessage">
+                                    <div class="message-display">
+                                        <p>Select a message to decode my hidden feelings... 💖</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="decoder-counter">
+                                    Messages decoded: <span id="decodedCount">0</span>/6
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Virtual Hug Sender -->
+                    <div class="hug-sender-container" id="hugSender">
+                        <div class="hug-portal">
+                            <div class="hug-header">
+                                <h3 class="hug-title">🤗 Virtual Hug Sender 🤗</h3>
+                                <button class="close-hug" onclick="closeVirtualHugSender()">&times;</button>
+                            </div>
+                            <div class="hug-scene">
+                                <div class="hug-avatar">
+                                    <div class="avatar-me">👨‍💻</div>
+                                    <div class="hug-animation" id="hugAnimation">
+                                        <div class="hug-hearts"></div>
+                                    </div>
+                                    <div class="avatar-kriti">👩‍🦱</div>
+                                </div>
+                                
+                                <div class="hug-controls">
+                                    <button class="hug-type-btn" onclick="sendHug('gentle')">
+                                        🤗 Gentle Hug
+                                    </button>
+                                    <button class="hug-type-btn" onclick="sendHug('warm')">
+                                        🫂 Warm Hug
+                                    </button>
+                                    <button class="hug-type-btn" onclick="sendHug('tight')">
+                                        🤗 Tight Hug
+                                    </button>
+                                    <button class="hug-type-btn" onclick="sendHug('magical')">
+                                        ✨ Magical Hug
+                                    </button>
+                                </div>
+                                
+                                <div class="hug-message" id="hugMessage">
+                                    Choose a hug type to send across the miles! 💕
+                                </div>
+                                
+                                <div class="hug-counter">
+                                    Hugs sent: <span id="hugCount">0</span> 🤗
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Friendship Time Capsule -->
+                    <div class="time-capsule-container" id="timeCapsule">
+                        <div class="capsule-portal">
+                            <div class="capsule-header">
+                                <h3 class="capsule-title">⏰ Friendship Time Capsule ⏰</h3>
+                                <button class="close-capsule" onclick="closeTimeCapsule()">&times;</button>
+                            </div>
+                            <div class="capsule-scene">
+                                <div class="time-machine">
+                                    <div class="capsule-display">
+                                        <div class="capsule-screen" id="capsuleScreen">
+                                            <p>🕰️ Welcome to our Friendship Time Machine! 🕰️</p>
+                                            <p>Select a time period to see our friendship journey...</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="time-controls">
+                                        <button class="time-btn" onclick="travelToTime('past')">
+                                            ⏪ Beautiful Past
+                                        </button>
+                                        <button class="time-btn" onclick="travelToTime('present')">
+                                            ⏸️ Amazing Present
+                                        </button>
+                                        <button class="time-btn" onclick="travelToTime('future')">
+                                            ⏩ Bright Future
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="memory-vault">
+                                        <h4>💎 Add to Memory Vault 💎</h4>
+                                        <input type="text" id="memoryInput" placeholder="Add a special memory...">
+                                        <button onclick="addMemory()">🔒 Lock in Time</button>
+                                        <div class="stored-memories" id="storedMemories"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Memory Constellation -->
+                    <div class="constellation-container" id="memoryConstellation">
+                        <div class="constellation-portal">
+                            <div class="constellation-header">
+                                <h3 class="constellation-title">⭐ Create Your Memory Constellation ⭐</h3>
+                                <button class="close-constellation" onclick="closeConstellation()">&times;</button>
+                            </div>
+                            <div class="constellation-scene" id="constellationScene">
+                                <div class="night-sky"></div>
+                                <div class="constellation-instructions">
+                                    <p>✨ Click anywhere to create shooting stars with your wishes! ✨</p>
+                                    <p>💫 Each star carries a special memory or dream for your journey 💫</p>
+                                </div>
+                                <div class="wish-input-container">
+                                    <input type="text" id="wishInput" placeholder="Type your wish or memory..." maxlength="50">
+                                    <button onclick="createWishStar()">🌟 Make a Star</button>
+                                </div>
+                                <div class="constellation-counter">
+                                    <span id="starCount">0</span> wishes in your constellation
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hidden Friendship Card -->
+                    <div class="friendship-card-container" id="friendshipCard">
+                        <div class="friendship-card">
+                            <div class="card-header">
+                                <div class="floating-hearts-card">
+                                    <span>💕</span><span>💖</span><span>💗</span><span>💝</span><span>❤️</span>
+                                </div>
+                                <h3 class="card-title">Forever Lifetime Special Friendship</h3>
+                                <div class="friendship-badge">👫 BFF Certificate 👫</div>
+                            </div>
+                            
+                            <div class="card-content">
+                                <div class="friendship-message">
+                                    <p class="certificate-text">This certifies that</p>
+                                    <p class="friend-name">KRITI</p>
+                                    <p class="certificate-text">is officially my</p>
+                                    <p class="friendship-title">FOREVER BEST FRIEND</p>
+                                    
+                                    <div class="friendship-promises">
+                                        <div class="promise-item">
+                                            <span class="promise-icon">🤝</span>
+                                            <span>Always there for each other</span>
+                                        </div>
+                                        <div class="promise-item">
+                                            <span class="promise-icon">💫</span>
+                                            <span>Creating magical memories together</span>
+                                        </div>
+                                        <div class="promise-item">
+                                            <span class="promise-icon">🌟</span>
+                                            <span>Supporting each other's dreams</span>
+                                        </div>
+                                        <div class="promise-item">
+                                            <span class="promise-icon">💕</span>
+                                            <span>Unconditional love and care</span>
+                                        </div>
+                                        <div class="promise-item">
+                                            <span class="promise-icon">🎉</span>
+                                            <span>Celebrating life's beautiful moments</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="validity">
+                                        <p>Valid for: <strong>LIFETIME & BEYOND</strong> ♾️</p>
+                                        <p>Issued with: <strong>INFINITE LOVE</strong> 💖</p>
+                                    </div>
+                                    
+                                    <div class="signature-section">
+                                        <div class="signature">
+                                            <p class="signature-line">Your Forever Friend</p>
+                                            <p class="signature-date">Date: Today & Always 📅</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-footer">
+                                <div class="special-seal">
+                                    <div class="seal-content">
+                                        <span class="seal-text">OFFICIAL</span>
+                                        <span class="seal-icon">👑</span>
+                                        <span class="seal-text">FRIENDSHIP</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Wishes -->
+            <div class="text-center py-12">
+                <div class="rajasthani-card p-12 max-w-3xl mx-auto">
+                    <h2 class="elegant-title text-6xl font-bold mb-8">
+                        Until We Meet Again! 🌟
+                    </h2>
+                    <p class="text-2xl text-gray-700 leading-relaxed mb-8">
+                        Have the most incredible adventure, my dear friend! 
+                        May every moment be magical and every memory be precious. 
+                        Safe travels and lots of love! 💕
+                    </p>
+                    <div class="text-8xl mb-6">🚂💨❤️✨🏰</div>
+                    <p class="handwritten text-xl text-amber-800 font-bold">
+                        Made with love, just for you! 💖
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Train Animation -->
+        <div class="bottom-train">
+            🚂
+            <div class="heart-smoke">💕💕💕</div>
+        </div>
+    </div>
+    
+    <script>
+        // Global variables
+        let starCount = 0;
+        let journeyStep = 0;
+        let decodedMessages = 0;
+        let hugsSent = 0;
+        let memoriesStored = [];
+        
+        // Train entrance sequence
+        setTimeout(() => {
+            document.getElementById('trainWindows').classList.add('doors-open');
+        }, 3500);
+        
+        setTimeout(() => {
+            const trainBody = document.getElementById('trainBody');
+            trainBody.style.animation = 'trainLeave 3s ease-in-out forwards';
+            
+            const trainEntrance = document.getElementById('trainEntrance');
+            trainEntrance.style.animation = 'fadeOut 2s ease-in-out 2s forwards';
+        }, 7000);
+        
+        setTimeout(() => {
+            const mainWebsite = document.getElementById('mainWebsite');
+            mainWebsite.classList.add('show');
+            
+            document.getElementById('trainEntrance').style.display = 'none';
+        }, 9500);
+        
+        // Create sparkles
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.innerHTML = ['✨', '⭐', '💫', '🌟'][Math.floor(Math.random() * 4)];
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            sparkle.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            
+            document.getElementById('sparklesContainer').appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 5000);
+        }
+        
+        // Initialize effects after main website shows
+        setTimeout(() => {
+            setInterval(createSparkle, 1000);
+        }, 10000);
+        
+        // Mouse trail sparkles
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.95) {
+                const sparkle = document.createElement('div');
+                sparkle.innerHTML = '✨';
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.fontSize = '1rem';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '1000';
+                sparkle.style.color = '#FFD700';
+                sparkle.style.animation = 'sparkleFloat 1s ease-out forwards';
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 1000);
+            }
+        });
+        
+        // Add click effects
+        document.addEventListener('click', (e) => {
+            for (let i = 0; i < 5; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '💕';
+                heart.style.position = 'fixed';
+                heart.style.left = e.clientX + (Math.random() - 0.5) * 100 + 'px';
+                heart.style.top = e.clientY + (Math.random() - 0.5) * 100 + 'px';
+                heart.style.fontSize = '1.5rem';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '1000';
+                heart.style.animation = 'sparkleFloat 2s ease-out forwards';
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 2000);
+            }
+        });
+        
+        // Virtual Journey Functions
+        function startVirtualJourney() {
+            const portal = document.getElementById('journeyPortal');
+            portal.classList.add('show');
+            journeyStep = 0;
+            
+            // Start the journey animation
+            setTimeout(() => {
+                animateJourney();
+            }, 1000);
+        }
+        
+        function animateJourney() {
+            const messages = [
+                "Starting your magical journey... 🚂",
+                "Passing through the bustling city... 🌆",
+                "Rolling through peaceful countryside... 🌾",
+                "Climbing majestic mountains... 🏔️",
+                "Welcome to Kota, Rajasthan! 🏰✨"
+            ];
+            
+            const progressFill = document.getElementById('progressFill');
+            const journeyMessage = document.getElementById('journeyMessage');
+            const stops = document.querySelectorAll('.stop');
+            
+            if (journeyStep < messages.length) {
+                // Update progress bar
+                progressFill.style.width = ((journeyStep + 1) / messages.length) * 100 + '%';
+                
+                // Update message
+                journeyMessage.textContent = messages[journeyStep];
+                
+                // Update active stop
+                stops.forEach(stop => stop.classList.remove('active'));
+                stops[journeyStep].classList.add('active');
+                
+                journeyStep++;
+                
+                // Continue animation
+                setTimeout(animateJourney, 2000);
+            } else {
+                // Journey complete - add celebration
+                setTimeout(() => {
+                    createJourneyCelebration();
+                }, 1000);
+            }
+        }
+        
+        function createJourneyCelebration() {
+            const portal = document.querySelector('.journey-portal');
+            
+            // Create fireworks
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.innerHTML = ['🎆', '🎇', '✨', '🌟'][Math.floor(Math.random() * 4)];
+                    firework.style.position = 'absolute';
+                    firework.style.left = Math.random() * 100 + '%';
+                    firework.style.top = Math.random() * 50 + '%';
+                    firework.style.fontSize = '2rem';
+                    firework.style.animation = 'sparkleFloat 3s ease-out forwards';
+                    firework.style.zIndex = '100';
+                    
+                    portal.appendChild(firework);
+                    
+                    setTimeout(() => {
+                        firework.remove();
+                    }, 3000);
+                }, i * 200);
+            }
+        }
+        
+        function closePortal() {
+            document.getElementById('journeyPortal').classList.remove('show');
+        }
+        
+        // Memory Constellation Functions
+        function openMemoryConstellation() {
+            const constellation = document.getElementById('memoryConstellation');
+            constellation.classList.add('show');
+            
+            // Add click listener for shooting stars
+            const scene = document.getElementById('constellationScene');
+            scene.addEventListener('click', createShootingStar);
+        }
+        
+        function createShootingStar(e) {
+            const scene = document.getElementById('constellationScene');
+            const rect = scene.getBoundingClientRect();
+            
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+            shootingStar.style.left = (e.clientX - rect.left) + 'px';
+            shootingStar.style.top = (e.clientY - rect.top) + 'px';
+            shootingStar.style.animation = 'shootingStar 2s ease-out forwards';
+            
+            scene.appendChild(shootingStar);
+            
+            setTimeout(() => {
+                shootingStar.remove();
+            }, 2000);
+        }
+        
+        function createWishStar() {
+            const wishInput = document.getElementById('wishInput');
+            const wish = wishInput.value.trim();
+            
+            if (wish) {
+                const scene = document.getElementById('constellationScene');
+                const star = document.createElement('div');
+                star.className = 'wish-star';
+                star.innerHTML = '⭐';
+                star.style.left = Math.random() * 80 + 10 + '%';
+                star.style.top = Math.random() * 60 + 20 + '%';
+                star.title = wish;
+                
+                scene.appendChild(star);
+                
+                starCount++;
+                document.getElementById('starCount').textContent = starCount;
+                wishInput.value = '';
+                
+                // Add click listener to star
+                star.addEventListener('click', () => {
+                    alert(`✨ Your wish: "${wish}" ✨`);
+                });
+            }
+        }
+        
+        function closeConstellation() {
+            document.getElementById('memoryConstellation').classList.remove('show');
+        }
+        
+        // Friendship Card Reveal Function
+        function revealFriendshipCard() {
+            const friendshipCard = document.getElementById('friendshipCard');
+            const surpriseBtn = document.getElementById('surpriseBtn');
+            
+            // Hide the button
+            surpriseBtn.style.transform = 'scale(0)';
+            surpriseBtn.style.opacity = '0';
+            
+            // Show the friendship card with animation
+            setTimeout(() => {
+                friendshipCard.classList.add('show');
+                
+                // Create celebration effects
+                createFriendshipCelebration();
+                
+                // Hide button completely
+                setTimeout(() => {
+                    surpriseBtn.style.display = 'none';
+                }, 500);
+            }, 300);
+        }
+        
+        // Friendship Celebration Effects
+        function createFriendshipCelebration() {
+            // Heart explosion
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = ['💕', '💖', '💗', '💝', '❤️', '💜', '💙', '💚', '🧡', '💛'][Math.floor(Math.random() * 10)];
+                    heart.style.position = 'fixed';
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.fontSize = '2rem';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '10000';
+                    
+                    const angle = (i / 30) * 2 * Math.PI;
+                    const velocity = 150 + Math.random() * 200;
+                    const vx = Math.cos(angle) * velocity;
+                    const vy = Math.sin(angle) * velocity;
+                    
+                    heart.style.animation = `friendshipHeartExplosion 3s ease-out forwards`;
+                    heart.style.setProperty('--vx', vx + 'px');
+                    heart.style.setProperty('--vy', vy + 'px');
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 3000);
+                }, i * 50);
+            }
+            
+            // Confetti explosion
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.innerHTML = ['🎉', '🎊', '✨', '🌟', '💫'][Math.floor(Math.random() * 5)];
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10vh';
+                    confetti.style.fontSize = '1.5rem';
+                    confetti.style.pointerEvents = 'none';
+                    confetti.style.zIndex = '9999';
+                    confetti.style.animation = `confettiFall 4s ease-out forwards`;
+                    
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 4000);
+                }, i * 100);
+            }
+        }
+        
+        // SECRET MESSAGE DECODER FUNCTIONS
+        function openSecretDecoder() {
+            const decoder = document.getElementById('secretDecoder');
+            decoder.classList.add('show');
+        }
+        
+        function closeSecretDecoder() {
+            document.getElementById('secretDecoder').classList.remove('show');
+        }
+        
+        function decodeMessage(messageNum) {
+            const secretMessages = {
+                1: {
+                    title: "🌟 The Day We Met",
+                    message: "From the very first moment I met you, I knew you were someone incredibly special. Your smile lit up the room and your kindness touched my heart. I'm so grateful our paths crossed! ✨"
+                },
+                2: {
+                    title: "💕 What You Mean to Me",
+                    message: "You're not just a friend - you're like a sister to me. Your presence in my life brings so much joy, laughter, and warmth. You make even ordinary days feel magical! 💖"
+                },
+                3: {
+                    title: "✨ Your Amazing Qualities",
+                    message: "Your strength inspires me, your humor makes me laugh until my stomach hurts, and your caring heart makes the world a better place. You're absolutely incredible, Kriti! 🌟"
+                },
+                4: {
+                    title: "🌈 Our Beautiful Memories",
+                    message: "Every moment we've shared is a treasure I keep close to my heart. From silly jokes to deep conversations, from adventures to quiet moments - each memory is pure gold! 💎"
+                },
+                5: {
+                    title: "💫 My Wishes for You",
+                    message: "I wish for you all the happiness in the world, endless adventures, dreams that come true, and a life filled with love and laughter. You deserve nothing but the absolute best! 🌟"
+                },
+                6: {
+                    title: "🎭 The Ultimate Secret",
+                    message: "Here's my biggest secret: Having you as my friend is one of the greatest blessings of my life. You make me a better person just by being you. Thank you for being absolutely amazing! 💕✨"
+                }
+            };
+            
+            const message = secretMessages[messageNum];
+            const messageDisplay = document.querySelector('.message-display');
+            const button = document.querySelector(`[onclick="decodeMessage(${messageNum})"]`);
+            
+            // Update message display with typing effect
+            messageDisplay.innerHTML = `
+                <h4 style="color: #FF1744; margin-bottom: 15px;">${message.title}</h4>
+                <p style="color: #FFD700;">${message.message}</p>
+            `;
+            
+            // Mark button as decoded
+            button.classList.add('decoded');
+            button.innerHTML = `✅ ${button.innerHTML.split(' ').slice(1).join(' ')}`;
+            
+            // Update counter
+            if (!button.classList.contains('counted')) {
+                decodedMessages++;
+                document.getElementById('decodedCount').textContent = decodedMessages;
+                button.classList.add('counted');
+            }
+            
+            // Create decoding effects
+            createDecodingEffects();
+            
+            // Special effect when all messages are decoded
+            if (decodedMessages === 6) {
+                setTimeout(() => {
+                    createSecretRevealCelebration();
+                }, 1000);
+            }
+        }
+        
+        function createDecodingEffects() {
+            const decoder = document.querySelector('.decoder-portal');
+            
+            // Create matrix-style effects
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const effect = document.createElement('div');
+                    effect.innerHTML = ['💖', '✨', '🔓', '💕', '🌟'][Math.floor(Math.random() * 5)];
+                    effect.style.position = 'absolute';
+                    effect.style.left = Math.random() * 100 + '%';
+                    effect.style.top = Math.random() * 100 + '%';
+                    effect.style.fontSize = '2rem';
+                    effect.style.animation = 'sparkleFloat 2s ease-out forwards';
+                    effect.style.zIndex = '100';
+                    
+                    decoder.appendChild(effect);
+                    
+                    setTimeout(() => {
+                        effect.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+        
+        function createSecretRevealCelebration() {
+            alert("🎉 AMAZING! You've decoded all my secret messages! 🎉\n\nNow you know exactly how much you mean to me! 💕✨");
+        }
+        
+        // VIRTUAL HUG SENDER FUNCTIONS
+        function openVirtualHugSender() {
+            const hugSender = document.getElementById('hugSender');
+            hugSender.classList.add('show');
+        }
+        
+        function closeVirtualHugSender() {
+            document.getElementById('hugSender').classList.remove('show');
+        }
+        
+        function sendHug(hugType) {
+            const hugMessages = {
+                gentle: {
+                    message: "🤗 Sending you the gentlest, warmest hug! Feel my arms around you with all the love and care in the world! 💕",
+                    hearts: "💕💕💕"
+                },
+                warm: {
+                    message: "🫂 Here's a big, warm hug that wraps you in comfort and love! You're so precious to me! 💖",
+                    hearts: "💖💖💖"
+                },
+                tight: {
+                    message: "🤗 The tightest, most loving hug coming your way! I'm holding you close in my heart always! 💗",
+                    hearts: "💗💗💗"
+                },
+                magical: {
+                    message: "✨ A magical hug filled with sparkles, love, and all the good vibes in the universe! You're amazing! 🌟💕",
+                    hearts: "✨💫⭐"
+                }
+            };
+            
+            const hug = hugMessages[hugType];
+            const hugMessage = document.getElementById('hugMessage');
+            const hugAnimation = document.getElementById('hugAnimation');
+            const hugHearts = hugAnimation.querySelector('.hug-hearts');
+            
+            // Update message
+            hugMessage.textContent = hug.message;
+            
+            // Show hug animation
+            hugHearts.textContent = hug.hearts;
+            hugAnimation.classList.add('active');
+            
+            // Update counter
+            hugsSent++;
+            document.getElementById('hugCount').textContent = hugsSent;
+            
+            // Create hug effects
+            createHugEffects(hugType);
+            
+            // Reset animation
+            setTimeout(() => {
+                hugAnimation.classList.remove('active');
+            }, 2000);
+        }
+        
+        function createHugEffects(hugType) {
+            const hugPortal = document.querySelector('.hug-portal');
+            const effectCount = hugType === 'magical' ? 20 : 15;
+            const effectEmojis = hugType === 'magical' ? ['✨', '💫', '⭐', '🌟', '💕'] : ['💕', '💖', '💗', '💝', '❤️'];
+            
+            for (let i = 0; i < effectCount; i++) {
+                setTimeout(() => {
+                    const effect = document.createElement('div');
+                    effect.innerHTML = effectEmojis[Math.floor(Math.random() * effectEmojis.length)];
+                    effect.style.position = 'absolute';
+                    effect.style.left = Math.random() * 100 + '%';
+                    effect.style.top = Math.random() * 100 + '%';
+                    effect.style.fontSize = '2rem';
+                    effect.style.animation = 'sparkleFloat 3s ease-out forwards';
+                    effect.style.zIndex = '100';
+                    
+                    hugPortal.appendChild(effect);
+                    
+                    setTimeout(() => {
+                        effect.remove();
+                    }, 3000);
+                }, i * 150);
+            }
+        }
+        
+        // FRIENDSHIP TIME CAPSULE FUNCTIONS
+        function openTimeCapsule() {
+            const timeCapsule = document.getElementById('timeCapsule');
+            timeCapsule.classList.add('show');
+        }
+        
+        function closeTimeCapsule() {
+            document.getElementById('timeCapsule').classList.remove('show');
+        }
+        
+        function travelToTime(period) {
+            const capsuleScreen = document.getElementById('capsuleScreen');
+            
+            const timeContent = {
+                past: {
+                    title: "🕰️ Our Beautiful Past 🕰️",
+                    content: `
+                        <p>💫 Remember when we first became friends? Those early conversations, shared laughs, and the moment I realized you were someone truly special!</p>
+                        <p>🌟 All those memories we've created together - each one a precious gem in the treasure chest of our friendship!</p>
+                        <p>💕 From the very beginning, you've brought so much joy and light into my life!</p>
+                    `
+                },
+                present: {
+                    title: "⏸️ Our Amazing Present ⏸️",
+                    content: `
+                        <p>🌈 Right now, in this very moment, you're embarking on an incredible journey to Rajasthan!</p>
+                        <p>✨ Our friendship is stronger than ever, filled with love, support, and endless possibilities!</p>
+                        <p>💖 Even though you're traveling, you carry my love and best wishes with you always!</p>
+                    `
+                },
+                future: {
+                    title: "⏩ Our Bright Future ⏩",
+                    content: `
+                        <p>🌟 I see so many beautiful adventures ahead for us - more laughter, more memories, more magical moments!</p>
+                        <p>💫 Your journey to Rajasthan is just the beginning of many amazing experiences waiting for you!</p>
+                        <p>💕 No matter where life takes us, our friendship will always be a constant source of joy and strength!</p>
+                    `
+                }
+            };
+            
+            const content = timeContent[period];
+            capsuleScreen.innerHTML = `
+                <h3 style="color: #00E676; margin-bottom: 20px;">${content.title}</h3>
+                <div style="text-align: left; line-height: 1.8;">${content.content}</div>
+            `;
+            
+            // Create time travel effects
+            createTimeTravelEffects();
+        }
+        
+        function addMemory() {
+            const memoryInput = document.getElementById('memoryInput');
+            const memory = memoryInput.value.trim();
+            
+            if (memory) {
+                memoriesStored.push({
+                    text: memory,
+                    timestamp: new Date().toLocaleString()
+                });
+                
+                const storedMemories = document.getElementById('storedMemories');
+                const memoryItem = document.createElement('div');
+                memoryItem.className = 'memory-item';
+                memoryItem.innerHTML = `
+                    <strong>💎 ${memory}</strong><br>
+                    <small>Locked in time: ${new Date().toLocaleString()}</small>
+                `;
+                
+                storedMemories.appendChild(memoryItem);
+                memoryInput.value = '';
+                
+                // Create memory lock effect
+                createMemoryLockEffect();
+            }
+        }
+        
+        function createTimeTravelEffects() {
+            const capsule = document.querySelector('.capsule-portal');
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const effect = document.createElement('div');
+                    effect.innerHTML = ['⏰', '🕰️', '⏳', '💫', '✨'][Math.floor(Math.random() * 5)];
+                    effect.style.position = 'absolute';
+                    effect.style.left = Math.random() * 100 + '%';
+                    effect.style.top = Math.random() * 100 + '%';
+                    effect.style.fontSize = '2rem';
+                    effect.style.animation = 'sparkleFloat 2s ease-out forwards';
+                    effect.style.zIndex = '100';
+                    
+                    capsule.appendChild(effect);
+                    
+                    setTimeout(() => {
+                        effect.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+        
+        function createMemoryLockEffect() {
+            const vault = document.querySelector('.memory-vault');
+            
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const effect = document.createElement('div');
+                    effect.innerHTML = ['💎', '🔒', '✨', '💕'][Math.floor(Math.random() * 4)];
+                    effect.style.position = 'absolute';
+                    effect.style.left = Math.random() * 100 + '%';
+                    effect.style.top = Math.random() * 100 + '%';
+                    effect.style.fontSize = '1.5rem';
+                    effect.style.animation = 'sparkleFloat 1.5s ease-out forwards';
+                    effect.style.zIndex = '100';
+                    
+                    vault.appendChild(effect);
+                    
+                    setTimeout(() => {
+                        effect.remove();
+                    }, 1500);
+                }, i * 100);
+            }
+        }
+        
+        // Add new animations for friendship celebration
+        const friendshipStyle = document.createElement('style');
+        friendshipStyle.textContent = `
+            @keyframes friendshipHeartExplosion {
+                0% { 
+                    transform: translate(-50%, -50%) scale(1); 
+                    opacity: 1; 
+                }
+                100% { 
+                    transform: translate(calc(-50% + var(--vx)), calc(-50% + var(--vy))) scale(0) rotate(720deg); 
+                    opacity: 0; 
+                }
+            }
+            
+            @keyframes confettiFall {
+                0% { 
+                    transform: translateY(-10vh) rotate(0deg); 
+                    opacity: 1; 
+                }
+                100% { 
+                    transform: translateY(110vh) rotate(720deg); 
+                    opacity: 0; 
+                }
+            }
+        `;
+        document.head.appendChild(friendshipStyle);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9755001c35b3483e',t:'MTc1NjIyODgzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
